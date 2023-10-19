@@ -23,6 +23,7 @@ Route::get('/index', function () {
 Route::get('/Home', [PageController::class, 'home']);
 
 Route::get('/HomeA', [AdminController::class, 'indexadmin']);
+Route::get('/data/mobil', [AdminController::class, 'datamobil']);
 
 Route::get('/Login_A', [AuthController::class, 'Login_Admin']);
 Route::get('/Regis_A', [AuthController::class, 'Register_Admin']);
