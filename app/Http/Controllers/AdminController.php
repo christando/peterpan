@@ -8,6 +8,11 @@ class AdminController extends Controller
 {
     public function indexadmin()
     {
-        return view('Admin.indexadmin');
+        return view('Admin.Layouts.homeadmin');
+    }
+
+    public function datamobil()
+    {
+        return view('Admin.datamobil');
     }
 }
