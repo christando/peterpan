@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+// use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\admin;
 
 class AuthController extends Controller
 {
@@ -20,11 +21,11 @@ class AuthController extends Controller
             'password' => $request->password
         ]))
         {
-            return redirect('/home');
+            return redirect('/Home_A');
         }
         else
         {
-            redirect('/');
+            redirect('/Login_A');
         }
     }
 
@@ -35,10 +36,14 @@ class AuthController extends Controller
 
     public function Save(Request $request)
     {
-        User::create(['nama'=>$request->nama,
+        admin::create(['username'=>$request->username,
+        'first_name'=>$request->fname,
+        'last_name'=>$request->lname,
         'email'=>$request->email,
-        'password'=>$request->password
+        'password'=>bcrypt($request->password)
     ]);
+
+        return redirect('/Login_A');
     }
 
     public function logout()
