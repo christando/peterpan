@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 // use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\admin;
+use App\Models\Driver;
 
-class AuthController extends Controller
+class AuthDriverController extends Controller
 {
-    public function Login_Admin()
+    public function Login_Driver()
     {
-        return view("Admin.Login");
+        return view("Driver.LoginDriver");
     }
 
     public function CekLogin(Request $request)
@@ -21,29 +21,29 @@ class AuthController extends Controller
             'password' => $request->password
         ]))
         {
-            return redirect('/HomeA');
+            return redirect('/HomeD');
         }
         else
         {
-            redirect('/Login_A');
+            redirect('/Login_D');
         }
     }
 
-    public function Register_Admin()
+    public function Register_Driver()
     {
-        return view("Admin.Register");
+        return view("Driver.RegisterDriver");
     }
 
     public function Save(Request $request)
     {
-        admin::create(['username'=>$request->username,
+        User::create(['username'=>$request->username,
         'first_name'=>$request->fname,
         'last_name'=>$request->lname,
         'email'=>$request->email,
         'password'=>bcrypt($request->password)
     ]);
 
-        return redirect('/Login_A');
+        return redirect('/Login_D');
     }
 
     public function logout()
