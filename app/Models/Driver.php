@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Driver extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = "admin";
+    protected $table = "driver";
 
     protected $fillable = [
         'username',

@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 // use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\admin;
+use App\Models\User;
 
-class AuthController extends Controller
+class AuthUserController extends Controller
 {
-    public function Login_Admin()
+    public function Login_User()
     {
-        return view("Admin.Login");
+        return view("User.LoginUser");
     }
 
     public function CekLogin(Request $request)
@@ -21,29 +21,29 @@ class AuthController extends Controller
             'password' => $request->password
         ]))
         {
-            return redirect('/HomeA');
+            return redirect('/HomeU');
         }
         else
         {
-            redirect('/Login_A');
+            redirect('/Login_U');
         }
     }
 
-    public function Register_Admin()
+    public function Register_User()
     {
-        return view("Admin.Register");
+        return view("User.RegisterUser");
     }
 
     public function Save(Request $request)
     {
-        admin::create(['username'=>$request->username,
+        User::create(['username'=>$request->username,
         'first_name'=>$request->fname,
         'last_name'=>$request->lname,
         'email'=>$request->email,
         'password'=>bcrypt($request->password)
     ]);
 
-        return redirect('/Login_A');
+        return redirect('/Login_U');
     }
 
     public function logout()
